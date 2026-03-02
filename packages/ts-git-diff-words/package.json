@@ -1,0 +1,41 @@
+{
+  "name": "@keydown-app/ts-git-diff-words",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Word-level diff algorithm for ts-git. Detects word changes and sentence moves across files.",
+  "author": "Edward Mowle <edward@keydown.app>",
+  "private": false,
+  "license": "MIT",
+  "keywords": [
+    "ts-git",
+    "git",
+    "diff",
+    "words",
+    "prose",
+    "typescript"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "dev": "tsc --watch",
+    "lint": "eslint . --ext .ts,.tsx",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "@keydown-app/ts-git": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "vitest": "^4.0.18"
+  }
+}

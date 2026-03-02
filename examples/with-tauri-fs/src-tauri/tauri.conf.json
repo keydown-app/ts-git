@@ -1,0 +1,44 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "TS-Git",
+  "version": "0.1.0",
+  "identifier": "app.keydown.ts-git",
+  "build": {
+    "beforeDevCommand": "pnpm vite:dev",
+    "beforeBuildCommand": "pnpm vite:build",
+    "devUrl": "http://localhost:1420",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": false,
+    "windows": [
+      {
+        "fullscreen": false,
+        "height": 800,
+        "resizable": true,
+        "title": "TS-Git",
+        "width": 1200
+      }
+    ],
+    "security": {
+      "csp": null,
+      "capabilities": ["default"]
+    }
+  },
+  "bundle": {
+    "active": true,
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "targets": "all"
+  },
+  "plugins": {
+    "fs": {
+      "requireLiteralLeadingDot": false
+    }
+  }
+}

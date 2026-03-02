@@ -1,0 +1,38 @@
+/**
+ * Tauri FS example — overrides for @ts-git/ui defaults only.
+ * Loaded after examples/ui/src/styles.css (@ts-git/ui) via index.css.
+ *
+ * Prefer variables from the UI theme where possible; use this file for
+ * example-specific tweaks (window chrome, density, accents, etc.).
+ */
+
+/* Example: tweak app chrome without forking the shared UI package
+:root {
+  --app-bg: #0f1419;
+}
+*/
+
+.app-sidebar {
+  margin: 0 0 8px 8px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.sidebar-resize-handle {
+  --handle-color: rgba(110, 168, 254, 0.25);
+  background: linear-gradient(
+    to bottom,
+    transparent 10px,
+    var(--handle-color) 10%,
+    var(--handle-color) 90%,
+    transparent calc(100% - 10px)
+  );
+}
+
+.terminal-panel {
+  margin-left: 8px;
+  border-radius: 10px 0 0 0;
+  border-left: 1px solid;
+  border-top: 1px solid;
+  border-color: var(--border-color);
+}

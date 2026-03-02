@@ -1,0 +1,7 @@
+/**
+ * Styles for TS-Git Tauri Application.
+ * Shared UI first, then example-only overrides (higher cascade order).
+ */
+
+@import '@ts-git/ui/styles.css';
+@import './app-overrides.css';

@@ -1,0 +1,44 @@
+{
+  "name": "@keydown-app/ts-git",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Local-only TypeScript Git implementation with pluggable filesystem support.",
+  "author": "Edward Mowle <edward@keydown.app>",
+  "private": false,
+  "license": "MIT",
+  "keywords": [
+    "ts-git",
+    "git",
+    "typescript",
+    "filesystem"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./cli": {
+      "import": "./dist/cli/index.js",
+      "types": "./dist/cli/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "dev": "tsc --watch",
+    "lint": "eslint . --ext .ts,.tsx",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@types/node": "^25.3.5",
+    "fflate": "^0.8.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "vitest": "^4.0.18"
+  }
+}

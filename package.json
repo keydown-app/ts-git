@@ -1,0 +1,37 @@
+{
+  "name": "ts-git-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.12.0",
+  "scripts": {
+    "build": "turbo build",
+    "test": "turbo test --filter=@keydown-app/ts-git",
+    "dev": "turbo dev --filter=@keydown-app/ts-git --filter=@ts-git/ui",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "lint": "turbo lint",
+    "lint:eslint": "eslint . --ext .ts,.tsx",
+    "dev:tauri": "turbo dev --filter=@keydown-app/ts-git --filter=ts-git-example-with-tauri-fs",
+    "dev:zen": "turbo dev --filter=@keydown-app/ts-git --filter=ts-git-example-with-zen-fs",
+    "preview:tauri": "turbo preview --filter=ts-git-example-with-tauri-fs",
+    "preview:zen": "turbo preview --filter=ts-git-example-with-zen-fs",
+    "typecheck": "turbo typecheck",
+    "clean": "turbo clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.1.0",
+    "turbo": "^2.8.14",
+    "typescript": "^5.3.0"
+  }
+}

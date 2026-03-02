@@ -1,0 +1,43 @@
+{
+  "name": "@keydown-app/ts-git-diff-myers",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Myers diff algorithm for ts-git. Line-level diff implementation using jsdiff.",
+  "author": "Edward Mowle <edward@keydown.app>",
+  "private": false,
+  "license": "MIT",
+  "keywords": [
+    "ts-git",
+    "git",
+    "diff",
+    "myers",
+    "typescript"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "dev": "tsc --watch",
+    "lint": "eslint . --ext .ts,.tsx",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "@keydown-app/ts-git": "workspace:*"
+  },
+  "dependencies": {
+    "diff": "^8.0.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "vitest": "^4.0.18"
+  }
+}
