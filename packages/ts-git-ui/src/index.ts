@@ -1,5 +1,12 @@
-export { FileTree, type FileTreeOptions } from './components/sidebar/FileTree.js';
-export { Terminal, type TerminalOptions } from './components/Terminal.js';
+export {
+  FileTree,
+  type FileTreeOptions,
+} from './components/sidebar/FileTree.js';
+export {
+  Terminal,
+  type TerminalOptions,
+  type CommandResult,
+} from './components/Terminal.js';
 export { VimEditor, type VimEditorOptions } from './components/VimEditor.js';
 export {
   Sidebar,
@@ -19,3 +26,7 @@ export {
 } from './components/sidebar/index.js';
 export { App, type AppConfig } from './components/App.js';
 export { NullAdapter } from './lib/NullAdapter.js';
+export {
+  ContentPreview,
+  type ContentPreviewOptions,
+} from './components/ContentPreview.js';

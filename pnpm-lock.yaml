@@ -51,14 +51,14 @@ importers:
         specifier: ^0.34.2
         version: 0.34.5
 
-  examples/ui:
+  examples/with-inmemory-fs:
     dependencies:
       '@keydown-app/ts-git':
         specifier: workspace:*
         version: link:../../packages/ts-git
-      lucide:
-        specifier: ^0.577.0
-        version: 0.577.0
+      '@ts-git/ui':
+        specifier: workspace:*
+        version: link:../../packages/ts-git-ui
     devDependencies:
       '@playwright/test':
         specifier: ^1.58.2
@@ -98,7 +98,7 @@ importers:
         version: 2.4.5
       '@ts-git/ui':
         specifier: workspace:*
-        version: link:../ui
+        version: link:../../packages/ts-git-ui
     devDependencies:
       '@playwright/test':
         specifier: ^1.58.2
@@ -123,7 +123,7 @@ importers:
         version: link:../../packages/ts-git-diff-myers
       '@ts-git/ui':
         specifier: workspace:*
-        version: link:../ui
+        version: link:../../packages/ts-git-ui
     devDependencies:
       '@playwright/test':
         specifier: ^1.58.2
@@ -191,6 +191,31 @@ importers:
       vitest:
         specifier: ^4.0.18
         version: 4.0.18(@types/node@25.3.5)(jiti@1.21.7)(terser@5.46.0)
+
+  packages/ts-git-ui:
+    dependencies:
+      '@keydown-app/ts-git':
+        specifier: workspace:*
+        version: link:../ts-git
+      lucide:
+        specifier: ^0.577.0
+        version: 0.577.0
+    devDependencies:
+      autoprefixer:
+        specifier: ^10.4.16
+        version: 10.4.27(postcss@8.5.6)
+      postcss:
+        specifier: ^8.4.32
+        version: 8.5.6
+      tailwindcss:
+        specifier: ^3.3.6
+        version: 3.4.19
+      typescript:
+        specifier: ^5.3.0
+        version: 5.9.3
+      vite:
+        specifier: ^5.0.0
+        version: 5.4.21(@types/node@25.3.5)(terser@5.46.0)
 
 packages:
 
@@ -2967,10 +2992,6 @@ packages:
   loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
-
-  lru-cache@11.2.6:
-    resolution: {integrity: sha512-ESL2CrkS/2wTPfuend7Zhkzo2u0daGJ/A2VucJOgQ/C48S/zB8MMeMHSGKYpXhIjbPxfuezITkaBH1wqv00DDQ==}
-    engines: {node: 20 || >=22}
 
   lru-cache@11.2.7:
     resolution: {integrity: sha512-aY/R+aEsRelme17KGQa/1ZSIpLpNYYrhcrepKTZgE+W3WM16YMCaPwOHLHsmopZHELU0Ojin1lPVxKR0MihncA==}
@@ -7663,8 +7684,6 @@ snapshots:
     dependencies:
       js-tokens: 4.0.0
 
-  lru-cache@11.2.6: {}
-
   lru-cache@11.2.7: {}
 
   lru-cache@5.1.1:
@@ -8362,7 +8381,7 @@ snapshots:
 
   path-scurry@2.0.2:
     dependencies:
-      lru-cache: 11.2.6
+      lru-cache: 11.2.7
       minipass: 7.1.3
 
   path-type@4.0.0: {}

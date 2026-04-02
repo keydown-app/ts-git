@@ -11,15 +11,15 @@
   "scripts": {
     "build": "turbo build",
     "test": "turbo test --filter=@keydown-app/ts-git",
-    "dev": "turbo dev --filter=@keydown-app/ts-git --filter=@ts-git/ui",
+    "dev": "turbo dev --filter=@keydown-app/ts-git --filter=@ts-git/example-with-memory-fs",
     "docs": "turbo dev --filter=@ts-git/docs",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "lint": "turbo lint",
     "lint:eslint": "eslint . --ext .ts,.tsx",
     "dev:tauri": "turbo dev --filter=@keydown-app/ts-git --filter=ts-git-example-with-tauri-fs",
-    "dev:zen": "turbo dev --filter=@keydown-app/ts-git --filter=ts-git-example-with-zen-fs",
+    "dev:zen": "turbo dev --filter=@keydown-app/ts-git --filter=@ts-git/example-with-zen-fs",
     "preview:tauri": "turbo preview --filter=ts-git-example-with-tauri-fs",
-    "preview:zen": "turbo preview --filter=ts-git-example-with-zen-fs",
+    "preview:zen": "turbo preview --filter=@ts-git/example-with-zen-fs",
     "typecheck": "turbo typecheck",
     "clean": "turbo clean && rm -rf node_modules"
   },

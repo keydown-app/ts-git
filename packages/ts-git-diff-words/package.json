@@ -1,6 +1,6 @@
 {
   "name": "@keydown-app/ts-git-diff-words",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "type": "module",
   "description": "Word-level diff algorithm for ts-git. Detects word changes and sentence moves across files.",
   "author": "Edward Mowle <edward@keydown.app>",

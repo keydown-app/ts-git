@@ -1,5 +1,5 @@
 {
-  "name": "@ts-git/ui",
+  "name": "@ts-git/example-with-memory-fs",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -15,16 +15,9 @@
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:ci": "npm run build && (npm run preview -- --port 4173 & PREVIEW_PID=$!; sleep 3; npm run test:e2e; TEST_EXIT=$?; kill $PREVIEW_PID 2>/dev/null; exit $TEST_EXIT)"
   },
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
-  "exports": {
-    ".": "./src/index.ts",
-    "./styles.css": "./src/styles.css",
-    "./tailwind.config": "./tailwind.config.js"
-  },
   "dependencies": {
     "@keydown-app/ts-git": "workspace:*",
-    "lucide": "^0.577.0"
+    "@ts-git/ui": "workspace:*"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",

@@ -1,6 +1,6 @@
 {
   "name": "@keydown-app/ts-git-diff-myers",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "type": "module",
   "description": "Myers diff algorithm for ts-git. Line-level diff implementation using jsdiff.",
   "author": "Edward Mowle <edward@keydown.app>",
