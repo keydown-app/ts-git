@@ -1,0 +1,110 @@
+---
+title: TS-Git
+description: Local-only TypeScript Git implementation with pluggable filesystem support
+template: splash
+banner:
+  content: |
+    <strong>⚠️ Alpha Release:</strong> TS-Git is work in progress and currently only supports a local subset of Git commands. <a href="/roadmap">View roadmap and limitations</a>
+hero:
+  tagline: A pure TypeScript Git implementation that runs entirely in the browser or Node.js
+  image:
+    file: ../../assets/houston.webp
+  actions:
+    - text: Get Started
+      link: /getting-started/introduction/
+      icon: right-arrow
+    - text: View on GitHub
+      link: https://github.com/keydown-app/ts-git
+      icon: github
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Features
+
+<CardGrid stagger>
+  <Card title="Pluggable Filesystem" icon="setting">
+    Works with in-memory, browser storage, or native filesystems via adapter
+    pattern
+  </Card>
+  <Card title="Minimal Dependencies" icon="document">
+    Lightweight core with only essential dependencies. Bring your own diff
+    algorithm.
+  </Card>
+  <Card title="Well Tested" icon="approve-check">
+    Comprehensive test suite with 470+ tests
+  </Card>
+  <Card title="Browser Native" icon="rocket">
+    Run Git operations directly in the browser
+  </Card>
+  <Card title="Type Safe" icon="seti:typescript">
+    Fully typed with TypeScript for excellent developer experience
+  </Card>
+  <Card title="Git Compatible" icon="seti:git">
+    Standard Git API with familiar commands. Includes interoperability tests to
+    ensure compatibility with existing repositories and the canonical Git CLI.
+  </Card>
+</CardGrid>
+
+## Quick Start
+
+```typescript
+import { GitClient, MemoryFSAdapter } from '@keydown-app/ts-git';
+
+// Create a filesystem adapter
+const fs = new MemoryFSAdapter();
+
+// Initialize Git client
+const git = new GitClient({ fs, dir: '/my-repo' });
+
+// Initialize a repository
+await git.init({ defaultBranch: 'main' });
+
+// Stage and commit files
+await git.add('README.md');
+await git.commit('Initial commit', {
+  name: 'John Doe',
+  email: 'john@example.com',
+});
+```
+
+## Installation
+
+```bash
+npm install @keydown-app/ts-git
+```
+
+## Next Steps
+
+- [Getting Started Guide](/getting-started/introduction/) - Learn the basics
+- [Commands Reference](/commands/init/) - Explore available Git commands
+- [Filesystem Adapters](/filesystem/overview/) - Choose your storage backend
+
+{/* Style homepage banner with warning orange colors */}
+
+<style>{`
+  .sl-banner {
+    background: var(--sl-color-orange-low) !important;
+    border-bottom: 1px solid var(--sl-color-orange) !important;
+    color: var(--sl-color-text) !important;
+  }
+  
+  .sl-banner strong {
+    color: var(--sl-color-orange-high) !important;
+  }
+  
+  .sl-banner a {
+    color: var(--sl-color-orange-high) !important;
+  }
+  
+  :root[data-theme='light'] .sl-banner {
+    background: #fff7ed !important;
+    border-color: #f97316 !important;
+  }
+  
+  :root[data-theme='light'] .sl-banner strong,
+  :root[data-theme='light'] .sl-banner a {
+    color: #c2410c !important;
+  }
+`}</style>

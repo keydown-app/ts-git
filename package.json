@@ -1,5 +1,5 @@
 {
-  "name": "ts-git-monorepo",
+  "name": "@ts-git/monorepo",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -12,6 +12,7 @@
     "build": "turbo build",
     "test": "turbo test --filter=@keydown-app/ts-git",
     "dev": "turbo dev --filter=@keydown-app/ts-git --filter=@ts-git/ui",
+    "docs": "turbo dev --filter=@ts-git/docs",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "lint": "turbo lint",
     "lint:eslint": "eslint . --ext .ts,.tsx",
