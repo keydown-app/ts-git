@@ -159,7 +159,7 @@ importers:
         specifier: ^25.3.5
         version: 25.3.5
       fflate:
-        specifier: ^0.8.2
+        specifier: 0.8.2
         version: 0.8.2
     devDependencies:
       typescript:
