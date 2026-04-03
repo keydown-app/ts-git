@@ -1,5 +1,11 @@
 import type { FSAdapter, DirEntry, FileStats } from '@keydown-app/ts-git';
 
+// Extend FileSystemDirectoryHandle to include entries() method
+// This is part of the File System Access API spec but not yet in TypeScript DOM lib
+interface FileSystemDirectoryHandleWithEntries extends FileSystemDirectoryHandle {
+  entries(): AsyncIterableIterator<[string, FileSystemHandle]>;
+}
+
 /**
  * FileSystemAccessAdapter implements the FSAdapter interface using the Browser File System Access API.
  *
@@ -234,7 +240,9 @@ export class FileSystemAccessAdapter implements FSAdapter {
       const entries: DirEntry[] = [];
 
       // Use the async iterator on the directory handle
-      for await (const [name, handle] of dirHandle.entries()) {
+      const handleWithEntries =
+        dirHandle as FileSystemDirectoryHandleWithEntries;
+      for await (const [name, handle] of handleWithEntries.entries()) {
         entries.push({
           name,
           isFile: handle.kind === 'file',
