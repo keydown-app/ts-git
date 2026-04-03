@@ -62,7 +62,7 @@ export async function commit(args: {
 
   // Determine parents
   let parent: string[] = explicitParent ?? [];
-  let headInfo = await resolveHead(fs, gitdir);
+  const headInfo = await resolveHead(fs, gitdir);
 
   if (parent.length === 0 && headInfo) {
     if (headInfo.type === 'commit') {

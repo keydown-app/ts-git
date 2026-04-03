@@ -234,7 +234,6 @@ export class FileSystemAccessAdapter implements FSAdapter {
       const entries: DirEntry[] = [];
 
       // Use the async iterator on the directory handle
-      // @ts-expect-error - FileSystemDirectoryHandle async iterator
       for await (const [name, handle] of dirHandle.entries()) {
         entries.push({
           name,
@@ -288,7 +287,7 @@ export class FileSystemAccessAdapter implements FSAdapter {
         };
       } catch {
         // Try as directory
-        const dirHandle = await this.getDirectoryHandle(path);
+        await this.getDirectoryHandle(path);
         return {
           isFile: false,
           isDirectory: true,
@@ -383,16 +382,16 @@ export class FileSystemAccessAdapter implements FSAdapter {
     }
   }
 
-  async readlink(path: string): Promise<string> {
+  async readlink(_path: string): Promise<string> {
     throw new Error(
       'Symbolic links are not supported in File System Access API',
     );
   }
 
   async symlink(
-    target: string,
-    path: string,
-    type?: 'dir' | 'file' | 'junction',
+    _target: string,
+    _path: string,
+    _type?: 'dir' | 'file' | 'junction',
   ): Promise<void> {
     throw new Error(
       'Symbolic links are not supported in File System Access API',

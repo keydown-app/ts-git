@@ -293,6 +293,9 @@ async function readPackObject(
     shift += 7;
   }
 
+  // size is calculated but not used in this function - it's part of the packfile format parsing
+  void size;
+
   if (typeNum === 6) {
     // OBJ_OFS_DELTA
     const { baseOffset, consumedBytes } = readOfsDeltaOffset(packData, pos);
@@ -375,11 +378,12 @@ function applyDelta(delta: Uint8Array, base: Uint8Array): Uint8Array {
   const readVarInt = (): number => {
     let value = 0;
     let shift = 0;
-    while (true) {
+    let hasMore = true;
+    while (hasMore) {
       const byte = delta[pos++];
       value |= (byte & 0x7f) << shift;
       shift += 7;
-      if (!(byte & 0x80)) break;
+      hasMore = (byte & 0x80) !== 0;
     }
     return value;
   };
