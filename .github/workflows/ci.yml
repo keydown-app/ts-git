@@ -93,7 +93,7 @@ jobs:
           name: build-output
 
       - name: Run unit tests
-        run: pnpm test -- --exclude='**/integration/**'
+        run: pnpm run test:unit
 
   interop-tests:
     name: Interoperability Tests
@@ -127,6 +127,6 @@ jobs:
           name: build-output
 
       - name: Run interoperability tests
-        run: pnpm test -- src/tests/integration
+        run: pnpm run test:interoperability
         env:
           REQUIRE_GIT: 'true'
