@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type ConsoleMessage } from '@playwright/test';
 
 test.describe('Application Smoke Tests', () => {
   test('app loads without console errors', async ({ page }) => {
@@ -6,7 +6,7 @@ test.describe('Application Smoke Tests', () => {
     const warnings: string[] = [];
 
     // Capture console errors and warnings
-    page.on('console', (msg: any) => {
+    page.on('console', (msg: ConsoleMessage) => {
       if (msg.type() === 'error') {
         const errorText = msg.text();
         errors.push(errorText);
@@ -19,7 +19,7 @@ test.describe('Application Smoke Tests', () => {
     });
 
     // Capture page errors
-    page.on('pageerror', (error: any) => {
+    page.on('pageerror', (error: Error) => {
       console.log('Page error:', error.message);
       errors.push(error.message);
     });
@@ -147,7 +147,7 @@ test.describe('Application Smoke Tests', () => {
   test('no JavaScript errors on page load', async ({ page }) => {
     const jsErrors: string[] = [];
 
-    page.on('pageerror', (error: any) => {
+    page.on('pageerror', (error: Error) => {
       jsErrors.push(error.message);
       console.log('JavaScript error:', error.message);
     });

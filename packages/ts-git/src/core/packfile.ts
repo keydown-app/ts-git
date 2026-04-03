@@ -216,24 +216,29 @@ async function getPackOffsets(
   return offsets;
 }
 
-const PACK_CACHE_KEY = '__pack_offsets_cache__';
+type PackOffsetsMap = Map<string, { packPath: string; offset: number }>;
+
+const packOffsetsCache = new WeakMap<
+  FSAdapter,
+  { gitdir: string; offsets: PackOffsetsMap }
+>();
 
 async function getPackOffsetsCached(
   fs: FSAdapter,
   gitdir: string,
-): Promise<Map<string, { packPath: string; offset: number }>> {
-  const cached = (fs as any)[PACK_CACHE_KEY];
+): Promise<PackOffsetsMap> {
+  const cached = packOffsetsCache.get(fs);
   if (cached && cached.gitdir === gitdir) {
     return cached.offsets;
   }
 
   const offsets = await getPackOffsets(fs, gitdir);
-  (fs as any)[PACK_CACHE_KEY] = { gitdir, offsets };
+  packOffsetsCache.set(fs, { gitdir, offsets });
   return offsets;
 }
 
 export function invalidatePackCache(fs: FSAdapter): void {
-  delete (fs as any)[PACK_CACHE_KEY];
+  packOffsetsCache.delete(fs);
 }
 
 const OBJECT_TYPES: GitObjectType[] = ['commit', 'tree', 'blob', 'tag'];

@@ -76,9 +76,9 @@ describe('readObject with packfile fallback', () => {
     await fs.mkdir('/repo/.git/objects/ab', { recursive: true });
 
     const content = new TextEncoder().encode('Hello, World!');
-    const oid = await writeObject(fs as any, '/repo/.git', 'blob', content);
+    const oid = await writeObject(fs, '/repo/.git', 'blob', content);
 
-    const result = await readObject(fs as any, '/repo/.git', oid);
+    const result = await readObject(fs, '/repo/.git', oid);
 
     expect(result).not.toBeNull();
     expect(result.type).toBe('blob');
@@ -89,14 +89,14 @@ describe('readObject with packfile fallback', () => {
     await fs.mkdir('/repo/.git/objects/pack', { recursive: true });
 
     await writeObject(
-      fs as any,
+      fs,
       '/repo/.git',
       'blob',
       new TextEncoder().encode('test content'),
     );
 
     const result = await readObject(
-      fs as any,
+      fs,
       '/repo/.git',
       'nonexistent0000000000000000000000000000',
     ).catch((e) => e);

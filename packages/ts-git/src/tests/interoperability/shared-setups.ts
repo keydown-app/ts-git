@@ -10,7 +10,7 @@ import {
 } from './helpers.js';
 
 /**
- * Shared test setup utilities for integration tests.
+ * Shared test setup utilities for interoperability tests involving system Git.
  * These functions create pre-configured repository scenarios
  * that can be reused across multiple tests.
  */
