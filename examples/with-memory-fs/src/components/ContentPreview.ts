@@ -6,7 +6,7 @@ import type {
   Hunk,
 } from '@keydown-app/ts-git';
 import { normalizeRepoRelativePath, relative } from '@keydown-app/ts-git';
-import { getIcon } from '../lib/icons.js';
+import { getIcon } from '@ts-git/ui';
 
 export interface GitOperations {
   log(depth?: number): Promise<LogEntry[]>;

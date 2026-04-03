@@ -30,3 +30,9 @@ export {
   ContentPreview,
   type ContentPreviewOptions,
 } from './components/ContentPreview.js';
+export {
+  getIcon,
+  createIconElement,
+  iconRegistry,
+  type IconName,
+} from './lib/icons.js';

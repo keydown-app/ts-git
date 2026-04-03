@@ -1,6 +1,6 @@
 import type { StatusRow, FSAdapter } from '@keydown-app/ts-git';
 import { classifyStatusRow } from '@keydown-app/ts-git';
-import { getIcon } from '../../lib/icons.js';
+import { getIcon } from '@ts-git/ui';
 import {
   GIT_SIDEBAR_NOT_A_REPO,
   GIT_SIDEBAR_REPO_STATE,

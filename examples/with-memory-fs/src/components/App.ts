@@ -9,7 +9,7 @@ import {
 import { Terminal } from './Terminal.js';
 import { Sidebar, type FileTree } from './sidebar/index.js';
 import { ContentPreview } from './ContentPreview.js';
-import { getIcon } from '../lib/icons.js';
+import { getIcon } from '@ts-git/ui';
 
 const SIDEBAR_WIDTH_KEY = 'tsgit-sidebar-width-px';
 const SIDEBAR_MIN_PX = 250;

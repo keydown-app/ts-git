@@ -1,7 +1,7 @@
 import type { FSAdapter } from '@keydown-app/ts-git';
 import type { CommandResult } from '@keydown-app/ts-git/cli';
 import { VimEditor } from './VimEditor.js';
-import { getIcon } from '../lib/icons.js';
+import { getIcon } from '@ts-git/ui';
 
 export type { CommandResult };
 
