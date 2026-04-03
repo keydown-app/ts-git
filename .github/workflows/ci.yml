@@ -13,10 +13,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
+        with:
+          node-version: '>=22.0.0'
 
       - name: Install pnpm
         uses: pnpm/action-setup@v5
@@ -37,10 +39,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
+        with:
+          node-version: '>=22.0.0'
 
       - name: Install pnpm
         uses: pnpm/action-setup@v5
@@ -49,13 +53,15 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build packages
-        run: pnpm run build
+        run: pnpm exec turbo build --filter='./packages/*' --filter='./docs'
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: build-output
-          path: packages/*/dist
+          path: |
+            packages/*/dist
+            docs/dist
           retention-days: 1
 
   unit-tests:
@@ -65,10 +71,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
+        with:
+          node-version: '>=22.0.0'
 
       - name: Install pnpm
         uses: pnpm/action-setup@v5
@@ -77,10 +85,9 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: build-output
-          path: packages
 
       - name: Run unit tests
         run: pnpm test -- --exclude='**/integration/**'
@@ -92,7 +99,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Verify Git is available
         run: |
@@ -101,6 +108,8 @@ jobs:
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
+        with:
+          node-version: '>=22.0.0'
 
       - name: Install pnpm
         uses: pnpm/action-setup@v5
@@ -109,10 +118,9 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: build-output
-          path: packages
 
       - name: Run interoperability tests
         run: pnpm test -- src/tests/integration
