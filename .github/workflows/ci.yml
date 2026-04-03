@@ -20,9 +20,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v5
-        with:
-          version: 9
-          cache: true
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -47,9 +44,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v5
-        with:
-          version: 9
-          cache: true
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -78,9 +72,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v5
-        with:
-          version: 9
-          cache: true
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -113,9 +104,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v5
-        with:
-          version: 9
-          cache: true
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
