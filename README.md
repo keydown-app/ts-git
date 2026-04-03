@@ -164,8 +164,21 @@ ts-git/
 │       │   ├── cli/       # Optional CommandParser (embedded terminal)
 │       │   └── fs/        # Filesystem adapters
 │       └── package.json
+│   └── ts-git-ui/         # Web UI example
+│       ├── src/
+│       │   ├── components/ # Web UI components
+│       │   ├── styles.css # Web UI styles
+│       │   └── package.json
+│   └── ts-git-diff-myers/ # Myers line diff implementation
+│       ├── src/
+│       │   ├── myers.ts
+│       │   └── package.json
+│   └── ts-git-diff-words/ # Prose/word diff implementation (placeholder)
+│       ├── src/
+│       │   ├── word.ts
+│       │   └── package.json
 ├── examples/
-│   ├── ui/               # Web UI example
+│   ├── with-memory-fs/   # In-memory filesystem example
 │   ├── with-tauri-fs/    # Desktop app example
 │   └── with-zen-fs/      # Browser filesystem example
 └── package.json

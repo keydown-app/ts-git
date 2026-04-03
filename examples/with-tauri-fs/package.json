@@ -1,5 +1,5 @@
 {
-  "name": "ts-git-example-with-tauri-fs",
+  "name": "@ts-git/example-with-tauri-fs",
   "version": "0.0.0",
   "private": true,
   "type": "module",
