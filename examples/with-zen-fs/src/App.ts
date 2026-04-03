@@ -113,18 +113,15 @@ export class App {
 
       // Request permission to access the directory
       // This is needed for persistent access across page reloads
-      if ('requestPermission' in dirHandle) {
-        // @ts-expect-error - requestPermission is not in the standard type definitions yet
-        const permission = await dirHandle.requestPermission({
-          mode: 'readwrite',
-        });
-        if (permission !== 'granted') {
-          this.showStatus(
-            'Permission denied. Cannot access the selected folder.',
-            'error',
-          );
-          return;
-        }
+      const permission = await dirHandle.requestPermission({
+        mode: 'readwrite',
+      });
+      if (permission !== 'granted') {
+        this.showStatus(
+          'Permission denied. Cannot access the selected folder.',
+          'error',
+        );
+        return;
       }
 
       // Initialize git operations
