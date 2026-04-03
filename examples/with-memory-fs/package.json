@@ -17,7 +17,8 @@
   },
   "dependencies": {
     "@keydown-app/ts-git": "workspace:*",
-    "@ts-git/ui": "workspace:*"
+    "@ts-git/ui": "workspace:*",
+    "lucide": "^0.577.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",

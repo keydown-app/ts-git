@@ -59,6 +59,9 @@ importers:
       '@ts-git/ui':
         specifier: workspace:*
         version: link:../../packages/ts-git-ui
+      lucide:
+        specifier: ^0.577.0
+        version: 0.577.0
     devDependencies:
       '@playwright/test':
         specifier: ^1.58.2
