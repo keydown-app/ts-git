@@ -80,6 +80,24 @@ const commits = await git.log();
 | `diff --name-only`  | ✅ Supported     | Show only names of changed files         |
 | `diff --name-status`| ✅ Supported     | Show names and status of changed files |
 | `diff --stat`       | ✅ Supported     | Show diffstat summary                  |
+
+### Plumbing Commands (Low-Level API)
+
+These commands provide direct access to Git's underlying object model. They are useful for building advanced tools or implementing custom version control workflows.
+
+| Command              | Status           | Description                             |
+| -------------------- | ---------------- | --------------------------------------- |
+| `cat-file`           | ✅ Supported     | Read object content by OID              |
+| `cat-file -t`        | ✅ Supported     | Show object type                        |
+| `cat-file -p`        | ✅ Supported     | Pretty-print object content             |
+| `hash-object`        | ✅ Supported     | Hash content and return OID             |
+| `hash-object -w`     | ✅ Supported     | Hash and write to object store          |
+| `ls-tree`            | ✅ Supported     | List tree entries by OID or ref         |
+| `ls-tree -r`         | ✅ Supported     | Recursive tree listing                  |
+| `update-index`       | ✅ Supported     | Manually update index entries           |
+| `update-index --add` | ✅ Supported     | Stage file to index                     |
+| `update-index --remove` | ✅ Supported   | Unstage file from index                 |
+
 | `tag`               | ❌ Not Supported | Create, list, or delete tags           |
 | `merge`             | ❌ Not Supported | Join development histories             |
 | `rebase`            | ❌ Not Supported | Reapply commits on top of another base |
