@@ -68,13 +68,11 @@ export async function push(args: {
 
   // Parse refspec or determine default push refspec
   let srcRef = 'refs/heads/master';
-  let dstRef = 'refs/heads/master';
   
   if (refspec) {
     // Parse refspec if provided
     const parts = refspec.split(':');
     srcRef = parts[0];
-    dstRef = parts[1] || srcRef;
   } else {
     // Determine current branch
     const headInfo = await resolveHeadCommitOid(fs, gitdir);
@@ -141,7 +139,7 @@ async function pushToLocal(
   _dir: string,
   gitdir: string,
   remotePath: string,
-  remoteName: string,
+  _remoteName: string,
   srcRef: string,
   srcOid: string,
   _force: boolean,
@@ -155,8 +153,7 @@ async function pushToLocal(
 
   // Determine destination ref
   /* eslint-disable no-unused-vars */
-  const dstRef = srcRef;
-  /* eslint-enable */
+  let dstRef = srcRef;
   if (srcRef === 'HEAD') {
     dstRef = 'refs/heads/master'; // Would need to detect current branch
   }
@@ -165,7 +162,7 @@ async function pushToLocal(
   const remoteRefs = await readRef(fs, remoteGitDir, dstRef.replace('refs/heads/', 'refs/heads/'));
   let oldOid: string | undefined;
 
-  if (!force && remoteRefs && remoteRefs !== srcOid) {
+  if (!_force && remoteRefs && remoteRefs !== srcOid) {
     errors.push(`error: failed to push to ${dstRef}: remote ref differs from local`);
     return { pushedRefs, errors };
   }
@@ -179,7 +176,7 @@ async function pushToLocal(
       await writeRef(fs, remoteGitDir, dstRef, srcOid, true);
     } catch {
       // Might need force
-      if (!force) {
+      if (!_force) {
         errors.push(`error: failed to update ref - use --force to override`);
         return { pushedRefs, errors };
       }
@@ -195,14 +192,14 @@ async function pushToLocal(
  * Push to an HTTP/HTTPS repository.
  */
 async function pushToHttp(
-  fs: FSAdapter,
-  dir: string,
-  gitdir: string,
-  baseUrl: string,
-  remoteName: string,
-  srcRef: string,
-  srcOid: string,
-  force: boolean,
+  _fs: FSAdapter,
+  _dir: string,
+  _gitdir: string,
+  _baseUrl: string,
+  _remoteName: string,
+  _srcRef: string,
+  _srcOid: string,
+  _force: boolean,
 ): Promise<{ pushedRefs: { name: string; oldOid?: string; newOid: string }[]; errors: string[] }> {
   // Simplified implementation - full Git protocol over HTTP would be complex
   const pushedRefs: { name: string; oldOid?: string; newOid: string }[] = [];
@@ -210,7 +207,7 @@ async function pushToHttp(
 
   // Try to use Git receive-pack
   try {
-    const receivePackUrl = baseUrl.replace(/\/$/, '') + '/git-receive-pack';
+    // const receivePackUrl = baseUrl.replace(/\/$/, '') + '/git-receive-pack';
     
     // For now, we're limited - just note that push via HTTP needs more implementation
     errors.push('push over HTTP not fully implemented - use SSH or local repository');

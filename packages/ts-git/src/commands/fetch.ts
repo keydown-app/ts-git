@@ -38,7 +38,7 @@ export function parseGitUrl(url: string): {
 
   // HTTP/HTTPS format: http[s]://[user@]host[:port]/path
   if (url.startsWith('http://') || url.startsWith('https://')) {
-    const match = url.match(/^https?:\/\/(?:([^@]+)@)?([^:\/]+)(?::(\d+))?(\/.*)$/);
+    const match = url.match(new RegExp('^https?:\\/(?:([^@]+)@)?([^:/]+)(?::(\\d+))?(/.*)$'));
     if (match) {
       const [, user, host, port, path] = match;
       return {
@@ -74,7 +74,7 @@ export async function fetch(args: {
   noTags?: boolean;
   tags?: string[];
 }): Promise<FetchResult> {
-  const { fs, dir, gitdir = joinPaths(dir, '.git'), remote, refspecs: _refspecs, noTags: _noTags } = args;
+  const { fs, dir, gitdir = joinPaths(dir, '.git'), remote } = args;
 
   if (!(await fs.exists(gitdir))) {
     throw new NotAGitRepoError(
@@ -115,7 +115,7 @@ async function fetchFromLocal(
   _dir: string,
   gitdir: string,
   remotePath: string,
-  remoteName: string,
+  _remoteName: string,
   fetchRefspec: string,
 ): Promise<{ name: string; oid: string; oldOid?: string }[]> {
   const fetchedRefs: { name: string; oid: string; oldOid?: string }[] = [];
