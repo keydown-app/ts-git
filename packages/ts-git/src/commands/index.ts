@@ -24,3 +24,8 @@ export { catFile, type ReadObjectResult } from './cat-file.js';
 export { hashObject, hashObjectString, type HashObjectResult } from './hash-object.js';
 export { updateIndex, type UpdateIndexResult } from './update-index.js';
 export { lsTree, type LsTreeResult } from './ls-tree.js';
+// Remote commands
+export { listRemotes, addRemote, removeRemote, getRemote, type RemoteInfo, type RemoteListResult } from './remote.js';
+export { fetch, type FetchResult, parseGitUrl } from './fetch.js';
+export { push, type PushResult } from './push.js';
+export { pull, type PullResult } from './pull.js';

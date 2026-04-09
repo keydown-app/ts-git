@@ -172,3 +172,30 @@ export class InvalidGitDirError extends TsGitError {
     this.name = 'InvalidGitDirError';
   }
 }
+
+export class FetchError extends TsGitError {
+  public readonly code = 'EFETCH';
+
+  constructor(message: string) {
+    super(message);
+    this.name = 'FetchError';
+  }
+}
+
+export class PushError extends TsGitError {
+  public readonly code = 'EPUSH';
+
+  constructor(message: string) {
+    super(message);
+    this.name = 'PushError';
+  }
+}
+
+export class PullError extends TsGitError {
+  public readonly code = 'EPULL';
+
+  constructor(message: string) {
+    super(message);
+    this.name = 'PullError';
+  }
+}

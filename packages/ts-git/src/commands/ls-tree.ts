@@ -45,7 +45,7 @@ function parseTreeContent(content: Uint8Array): TreeEntry[] {
 
 export async function lsTree(args: LsTreeArgs): Promise<LsTreeResult> {
   const { fs, dir, gitdir = joinPaths(dir, '.git'), tree, nameOnly = false } = args;
-  let treeOid = tree;
+  const treeOid = tree;
   if (!tree.match(/^[a-f0-9]{40}$/i)) {
     // For now, require OID - can enhance with ref resolution later
     throw new Error('ls-tree currently requires tree OID. Provide a 40-char hex OID.');
